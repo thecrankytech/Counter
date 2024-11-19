@@ -11,6 +11,10 @@ export default function Home() {
 useEffect(() => {
     localStorage.count = count;
     document.title = `You clicked ${count} times`;
+
+    return () => {
+      localStorage.clear()
+    }
 }, [count]);
 
   const clearCount = () => {
