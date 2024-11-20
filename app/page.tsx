@@ -1,17 +1,16 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [count, setCount] = useState(Number(localStorage.count || 0));
   
   const handleClick = () => {
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1);
   }
 
 useEffect(() => {
     localStorage.count = count;
     document.title = `You clicked ${count} times`;
-
     return () => {
       localStorage.clear()
     }
